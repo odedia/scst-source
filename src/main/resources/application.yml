@@ -1,11 +1,11 @@
-spring:
-  kafka:
-    properties:
-      security:
-        protocol: SASL_PLAINTEXT
-      sasl:
-        mechanism: PLAIN
-        jaas:
-          config: "org.apache.kafka.common.security.plain.PlainLoginModule required username='x' password='x';"
-    bootstrap-servers: "x:9092"
+# spring:
+#   kafka:
+#     properties:
+#       security:
+#         protocol: SASL_PLAINTEXT
+#       sasl:
+#         mechanism: PLAIN
+#         jaas:
+#           config: "org.apache.kafka.common.security.plain.PlainLoginModule required username='x' password='x';"
+#     bootstrap-servers: "x:9092"
 
