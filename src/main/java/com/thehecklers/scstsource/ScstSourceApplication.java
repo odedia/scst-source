@@ -10,6 +10,9 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import javax.annotation.PostConstruct;
@@ -29,6 +32,7 @@ public class ScstSourceApplication {
 @EnableBinding(Source.class)
 @EnableScheduling
 @AllArgsConstructor
+@RestController
 class CoffeeSender {
     private final Source source;
     private final CoffeeGenerator generator;
@@ -40,6 +44,16 @@ class CoffeeSender {
         System.out.println(coffee);
         source.output().send(MessageBuilder.withPayload(coffee).build());
     }
+
+    @GetMapping("/coffee/{brand}")
+    public String generateCoffee(@PathVariable("brand") String brand) {
+        WholesaleCoffee wCoffee = new WholesaleCoffee(UUID.randomUUID().toString(), brand);
+        System.out.println(wCoffee);
+        source.output().send(MessageBuilder.withPayload(wCoffee).build());
+        return "Generated coffee with brand = " + brand + "...";
+    }
+
+
 }
 
 @Component
