@@ -1,0 +1,11 @@
+team: ms360
+source:
+  git:
+    url: https://github.com/odedia/scst-source.git
+    revision: master
+build:
+  env:
+  - name: BP_JAVA_VERSION
+    value: 8.*
+image:
+  tag: harbor.pks.pvtl.eu/mytelco/scst-source
