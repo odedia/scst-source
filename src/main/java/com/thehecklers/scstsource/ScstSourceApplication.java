@@ -50,7 +50,7 @@ class CoffeeSender {
         WholesaleCoffee wCoffee = new WholesaleCoffee(UUID.randomUUID().toString(), brand);
         System.out.println(wCoffee);
         source.output().send(MessageBuilder.withPayload(wCoffee).build());
-        return "Generated coffee with brand = " + brand + "...";
+        return "Generated coffee with brand = " + brand + ".";
     }
 
 
